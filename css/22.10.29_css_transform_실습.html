@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>CSS transform실습</title>
+    <style>
+        img {
+            width:200px;
+            height:140px;
+        }
+        img:first-child{
+            position:relative;
+            top:100px;
+            transform: skewY(15deg);
+            z-index:3;
+        }
+        img:nth-child(2){
+            position:relative;
+            top:70px;
+            left:-80px;
+            transform: skewY(15deg);
+            z-index:2;
+        }
+        img:nth-child(2)+img{
+            position:relative;
+            top:40px;
+            left:-150px;
+            transform: skewY(15deg);
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/sample.jpg">
+    <img src="./img/sample.jpg">
+    <img src="./img/sample.jpg">
+</body>
+</html>

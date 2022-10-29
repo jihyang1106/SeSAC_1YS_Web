@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <title>css</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .deco {
+        text-decoration: underline;
+      }
+      /* h1 {
+        color: royalblue;
+      }
+      h2 {
+        color: greenyellow;
+        text-decoration: underline;
+      }
+      h3 {
+        color: green;
+        text-shadow: 3px 1px 1px black;
+      }
+      hr {
+        border: 5px;
+        border-style: dotted solid;
+        color: gold;
+      }
+      p {
+        background-color: black;
+        color: white;
+      }
+      img {
+        cursor: pointer;
+        margin-left: 100px;
+        width: 100px;
+        height: 100px;
+      }
+      div {
+        border: 3px palevioletred solid;
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        background-color: palegoldenrod;
+      } */
+
+      /*복합 선택자*/
+      /* #div2 {
+        background-color: yellowgreen;
+      }
+      #div2 .apple {
+        color: salmon;
+      }
+      #div2 > .apple {
+        text-decoration: underline;
+      } */
+
+      /*가상 선택자*/
+      /* div {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      } */
+      /* div:hover {
+        cursor: pointer; 
+        background-color: beige;
+      }
+      a:active {
+        color: red;
+      }
+      a:focus {
+        color: black;
+      }
+      a:visited {
+        color: goldenrod;
+      } */
+      .fruits span:first-child {
+        color: red;
+      }
+      .fruits div > p:first-child {
+        /*.fruits p:first-child와 동일*/
+        color: greenyellow;
+      }
+      .fruits h3:last-child {
+        color: red;
+      }
+      .fruits *:nth-child(2) {
+        color: blueviolet;
+      }
+      .fruits *:not(span) {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h1 class="deco">h1</h1>
+    <h2 class="red deco">h2</h2>
+    <h3 class="red">h3</h3>
+    <hr />
+    <p>p1</p>
+    <img src="../html/img/sesac.png" />
+    <div>div</div> -->
+    <!-- <div>
+      <div id="div2">
+        <p class="apple">1</p>
+        <p>2</p>
+        <div>
+          <p class="apple"></p>
+        </div>
+        <p class="apple">apple p2</p>
+      </div>
+      <p class="apple">apple p3</p>
+      <img class="apple" src="../html/img/sesac.png" width="100px" />
+    </div> -->
+    <!-- 가상선택자 -->
+    <div></div>
+    <a href="https://www.naver.com">a태그</a>
+    <div class="fruits">
+      <span>딸기</span>
+      <span>수박</span>
+      <div>
+        오렌지
+        <p>망고</p>
+        <p>딸기</p>
+      </div>
+      <h3>사과</h3>
+    </div>
+  </body>
+</html>
