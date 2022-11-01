@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+  <head>
+    <title>animation</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(200, 200, 248);
+        position: relative;
+        animation-name: anim;
+        animation-duration: 2s;
+        animation-delay:1s;
+        animation-iteration-count: 4;
+        animation-timing-function: ease;
+      }
+
+      @keyframes anim {
+        /*중간상태를 지정(%, from ~ to)
+            from {left: 0px;}
+        to {left: 100px;} */
+        0% {
+          /*조금더 세부적으로 나눌 수 있음*/
+          left: 0px;
+        }
+        50% {
+          left: 200px;
+        }
+        100% {
+          left: 100px;
+        }
+      }
+
+      .div1{
+        border-radius: 50px;
+        background-color: yellow;
+        animation-name: ball;
+        animation-delay: 2s;
+        animation-duration:3s;
+        animation-iteration-count: 5s;
+      }
+
+      @keyframes ball {
+        to {top : 100px; opacity: 0;}
+        from {top : 300px; opacity: 1;}
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+        <div></div>
+        <div class="div1"></div>
+    </body>
+  </body>
+</html>
