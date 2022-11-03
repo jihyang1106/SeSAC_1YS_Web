@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+  <head>
+    <title>간단 계산기 만들기</title>
+  </head>
+  <body>
+    값1 : <input type="text" id="input1">
+    <br>
+    값2 : <input type="text" id="input2">
+    <br>
+    연산자 : <input type="text" id="operator">
+    <br>
+    결과 : <input type="result" id="result">
+    <br>
+    <button type="button" onclick="calculator()">계산하기</button>
+    <button type="button" onclick="remove()">초기화</button>
+
+    <script>
+        function calculator(){
+            var operator = document.getElementById("operator").value;
+            var input1 = parseInt(document.getElementById("input1").value);
+            var input2 = parseInt(document.querySelector("#input2").value);
+            var result = document.querySelector("#result");
+
+            switch (operator){
+                case "+":
+                    result.value = input1 + input2;
+                break;
+                case "-":
+                    result.value = input1 - input2;
+                break;
+                case "*":
+                    result.value = input1 * input2;
+                break;
+                case "/":
+                    result.value = input1 / input2;
+            }
+            
+        }
+        function remove(){
+            let input = document.getElementsByTagName("input"); 
+            for(var i=0;i<input.length;i++){
+                input[i].value="";
+            }
+        }
+    </script>
+  </body>
+</html>
