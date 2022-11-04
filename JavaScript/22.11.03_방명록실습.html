@@ -47,13 +47,12 @@
 
         // tr 개수 세서.. 자동으로 번호 ++
         let trObj = document.getElementsByTagName("tr");
-        console.log(trObj.length);
 
         // 표에 데이터 넣기
         newCell1.innerText = trObj.length - 1;
         newCell2.innerText = writer;
         newCell3.innerText = content;
-        newCell4.innerText = year + "-" + date + " " + hours + " : " + minutes;
+        newCell4.innerText = year + " - " + month + " - " + date + " " + hours + " : " + minutes;
       }
     </script>
   </body>
