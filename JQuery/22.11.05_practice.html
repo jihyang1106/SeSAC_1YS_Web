@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./jquery-ui-1.13.2/jquery-ui.css" />
+    <title>practice1</title>
+    <style>
+        div {
+            width:300px;
+            height:300px;
+            border: 3px solid black;
+            background-size: 100%;
+        }
+        button {
+            background-color: darkgrey;
+            color:white;
+        }
+    </style>
+    <script>
+        function apple(){
+            $("#div").css("background-image","url('./img/apple.jpg')");
+        }
+        function strawberry(){
+            $("#div").css("background-image","url('./img/strawberry.jpg')");
+        }
+        function grape(){
+            $("#div").css("background-image","url('./img/grape.jpg')");
+        }
+        function peach(){
+            $("#div").css("background-image","url('./img/peach.jpg')");
+        }
+    </script>
+  </head>
+  <body>
+        <div id="div">
+        </div>
+        <br>
+        <button type="button" onclick="apple();">사과</button >
+        <button type="button" onclick="strawberry()">딸기</button >
+        <button type="button" onclick="grape()">포도</button >
+        <button type="button" onclick="peach()">복숭아</button >
+</body>
+</html>

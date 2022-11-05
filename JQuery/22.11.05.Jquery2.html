@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <title>Jquery2</title>
+    <style>
+      .cls {
+        background-color: thistle;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      function addClass() {
+        $("div").addClass("cls");
+      }
+      function removeClass() {
+        $("div").removeClass("cls");
+      }
+      function hasClass() {
+        console.log($("div").hasClass("cls"));
+      }
+      function toggleClass() {
+        $("div").toggleClass("cls");
+      }
+    </script>
+  </head>
+  <body>
+    <div>div 입니다.</div>
+    <input type="button" onclick="addClass()" value="addClass" />
+    <input type="button" onclick="removeClass()" value="removeClass" />
+    <input type="button" onclick="hasClass()" value="hasClass" />
+    <input type="button" onclick="toggleClass()" value="toggleClass" />
+  </body>
+</html>
