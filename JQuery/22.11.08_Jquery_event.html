@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <head>
+    <title>Event Listener</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  </head>
+  <body>
+    body 태그
+    <input type="text" id="input1">
+    <div id="div1" style="width:100px; height:100px; background-color: #ffc0cb;"></div>
+    <script>
+        // 로딩 이벤트
+        // $(document).ready(function(){
+        //     alert("ready"); // 웹페이지가 나타나면 alert창 뜸
+        // });
+        // 위 코드의 축약형
+        // $(function(){
+        //     alert("ready");
+        // })
+        
+        // 마우스 이벤트
+        $("#div1").click(function(event){
+            console.log("div click");
+            console.log("event: ", event);
+        })
+        $("#div1").mouseover(function(){
+            console.log("div mouseover");
+        })
+        $("#div1").hover(function(){
+            console.log("div hover"); // 마우스를 올렸을 때는 div hover!
+        }, function(){
+            console.log("div hover2"); // 마우스를 땠을 때는 div hover2!
+        })
+
+        $(window).scroll(function(){ 
+            console.log("window scroll");
+        })
+
+        // 키보드 이벤트
+        $("#input1").keydown(function(e){
+            $("#alert").text("글자가 입력됨, " + e.currentTarget.value);
+            console.log("input keydown");
+            console.log(e);
+            if(e.keyCode == 13){ // enter키의 keycode는 13
+                console.log("enter key");
+            }
+        })
+        $("#input1").keyup(function(e){
+            console.log("input keyup");
+        })
+
+    </script>
+  </body>
+</html>
