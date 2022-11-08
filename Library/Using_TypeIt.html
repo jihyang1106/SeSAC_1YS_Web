@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <title>Document</title>
+    <style>
+      :root {
+        --ti-cursor-margin-left: 1em;
+        --ti-cursor-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Hello My name is SeSAC</h1>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new TypeIt("#title")
+          .pause(1000) // 1초
+          .delete(5, { delay: 1000 })
+          .type("Jihyang")
+          .go();
+      });
+    </script>
+  </body>
+</html>
