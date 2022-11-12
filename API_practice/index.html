@@ -15,21 +15,20 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <h1 id="title_h1">읽은 도서를 검색해 보세요!</h1>
-      <input type="text" id="bookSearch" />
-      <button id="search">검색</button>
-      <div class="card mb-3">
-        <div class="card-img-top" id="bookImg" style="width: 100%"></div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
-        </div>
+      <div id="search_box">
+        <input type="text" id="bookSearch" />
+        <button id="search">검색</button>
       </div>
     </div>
-
+    <div class="container text-center align-items-center">
+      <div class="row">
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
