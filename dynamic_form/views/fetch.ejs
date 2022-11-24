@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch 실습</title>
+    <script>
+        function fetchGet(){
+            let form = document.querySelector("#form");
+            let urlQuery =`?name=${form.name.value}&gender=${form.gender.value}`;
+            fetch("/fetchGet"+urlQuery, {
+                method: 'get',
+            }).then((res)=> res.json())
+            .then((data) => {
+                alert(data.name + "님 안녕하세요")
+            })
+        }
+
+        function fetchPost() {
+            let form = document.querySelector("#form");
+            fetch("/fetchPost", {
+                method : "post",
+                headers : {
+                    "Content-Type" : "application/json",
+                },
+                body : JSON.stringify({
+                    name : form.name.value,
+                    gender : form.gender.value 
+                }),
+            }).then((res)=> res.json())
+            .then((data)=>{
+                console.log(data)
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="name" placeholder="이름을 입력해주세요">
+        <input type="radio" name="gender" value="female">여자
+        <input type="radio" name="gender" value="male">남자
+        <button type="button" onclick="fetchGet()">GET 요청</button>
+        <button type="button" onclick="fetchPost()">POST 요청</button>
+    </form>
+</body>
+</html>
