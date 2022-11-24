@@ -19,11 +19,10 @@ app.get("/form", (req,res)=>{
     res.send("이름은 : " + req.query.name); // , XX  + 여야 함
 })
 
-// axios 실습
+// axios get 실습
 app.get("/axios", (req,res)=>{
     res.render("axios");
 })
-
 app.get("/axiosGet", (req,res)=>{
    res.send(req.query);
 })
@@ -40,7 +39,15 @@ app.get("/axiosPost", (req,res)=>{
 })
 
 app.post("/axiosPost", (req,res)=>{
-    res.send(req.body);
+    if(req.body.id === "asdf" && req.body.pwd === "1234"){
+        res.send("<span style='color:blue'>로그인 성공 :)</span>");
+    }else if(req.body.id != "asdf") {
+        res.send("<span style='color:red'>아이디가 달라요 :< </span>");
+    } else if(req.body.pwd != "1234") {
+        res.send("<span style='color:red'>비밀번호가 달라요 :< </span>");
+    } else {
+        res.send("<span style='color:red'>로그인 실패 :<</span>");
+    }
 })
 
 // fetch 실습 

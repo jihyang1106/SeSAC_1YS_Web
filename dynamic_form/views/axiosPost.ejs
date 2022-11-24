@@ -19,16 +19,8 @@
                     pwd : input.pwd.value
                 }
             }).then((res)=>{
-                let id = res.data.id;
-                let pw = res.data.pwd;
-                if(id === "asdf" && pw == "1234"){
-                    div.innerHTML = "<span style='color:blue'>로그인 성공 :)</span>"
-                }else {
-                    div.innerHTML = "<span style='color:red'>로그인 실패 :<</span>"
-                }
-                
-            })
-
+                document.querySelector("#result").innerHTML = res.data;          
+            });
         }
     </script>
 </head>
@@ -38,7 +30,7 @@
         <input type="password" name="pwd" placeholder="비밀번호">
         <button type="button" onclick="login()">로그인</button>
     </form>
-    <div id="warn">
+    <div id="result">
 
     </div>
 </body>
