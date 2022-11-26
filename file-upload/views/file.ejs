@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file 업로드</title>
+</head>
+<body>
+    <h5>upload.single()</h5>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="name"> <!--multer 미들웨어에서 처리 o -->
+        <input type="file" name="userfile">
+        <input type="file" name="name2"> <!--multer 미들웨어에서 처리 x -->
+        <button>업로드</button>
+    </form>
+
+    <h5>upload array()</h5>
+    <form action="/upload-array" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile" multiple>
+        <button>업로드</button>
+    </form>
+
+    <h5>upload fields()</h5>
+    <form action="/upload-fields" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile1">
+        <input type="file" name="userfile2">
+        <input type="file" name="userfile3">
+        <button>업로드</button>
+    </form>
+</body>
+</html>
