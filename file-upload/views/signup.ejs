@@ -21,7 +21,7 @@
 
             // formData : js에서 폼 데이터를 다루기 위해 사용하는 객체
             let formData = new FormData(form);
-
+            console.log(formData);
             // 1) axios
             // axios({
             //     method:'post',
@@ -35,24 +35,26 @@
             // })
 
             // 2) fetch 
-            fetch("/upload",{
-                method : 'post',
-                body : formData,
-            }).then((res)=>{return res.json()})
-            .then((d)=>{
-                let path = d.file.path;
-                document.getElementById("profile").innerHTML 
-                = "<img src="+path+">"
-            })
+            // fetch("/upload",{
+            //     method : 'post',
+            //     body : formData,
+            // }).then((res)=>{return res.json()})
+            // .then((d)=>{
+            //     let path = d.file.path;
+            //     document.getElementById("profile").innerHTML 
+            //     = "<img src="+path+">"
+            // })
 
+            // 3) ajax
+             // formdata를 보내주기 위해서는 processData와 contentType이 false이어야 한다.
             $.ajax({
                 method : 'post',
                 url : '/upload',
                 data : formData,
+                processData : false, 
+                contentType : false,
                 success : (data)=>{
-                    console.log(data);
-                    document.getElementById("profile").innerHTML
-                    = "<img src="+path+">"
+                    $("#profile").html("<img src="+data.file.path+">");
                 },
                 error : (error)=>{
                     console.log(error);

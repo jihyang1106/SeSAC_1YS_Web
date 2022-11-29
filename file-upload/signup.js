@@ -32,12 +32,12 @@ const upload = multer({
 app.post("/upload", upload.single("userfile"), (req,res)=>{
     // axios
     // res.send("<img src="+req.file.path+" title="+req.file.filename+">");
-    // fetch 
+    // fetch & Ajax
     const body = req.body;
     const file = req.file;
     console.log(body, file);
-    res.send({body : req.body, file : req.file})
-    
+    res.send({body : req.body, file : req.file});
+
 })
 
 app.listen(port, ()=>{
