@@ -7,6 +7,8 @@
     <title>회원가입 실습</title>
     <!--axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--ajax-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
         function formAsync(){
             // 빈칸 없이!
@@ -40,8 +42,23 @@
             .then((d)=>{
                 let path = d.file.path;
                 document.getElementById("profile").innerHTML 
-                = "<img src="+path+"s>"
+                = "<img src="+path+">"
             })
+
+            $.ajax({
+                method : 'post',
+                url : '/upload',
+                data : formData,
+                success : (data)=>{
+                    console.log(data);
+                    document.getElementById("profile").innerHTML
+                    = "<img src="+path+">"
+                },
+                error : (error)=>{
+                    console.log(error);
+                }
+            })
+
         }
     </script>
 </head>
