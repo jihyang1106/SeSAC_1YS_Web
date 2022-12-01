@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!--axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--ajax-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <form id="form-login">
+        아이디 : <input type="text" name="id" id="userId"><br>
+        비밀번호 : <input type="password" name="pwd" id="userPwd"><br>
+        이름 : <input type="text" name="name" id="userName"><br>
+        <br>
+        <input type="button" value="axios Post로그인" onclick="axiosPost()">
+        <div id="result" style="text-align:center;"></div>
+    </form>
+</body>
+<script>
+    function axiosPost(){
+        let form = document.getElementById("form-login");
+        axios({
+            method: "post",
+            url : "/login",
+            data : {id : form.id.value, pwd : form.pwd.value, name : form.name.value}
+        }).then((res)=>{
+            console.log(res.data);
+            document.querySelector("#result").innerHTML = res.data;
+        })
+    }
+</script>
+</html>
