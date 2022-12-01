@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visitor</title>
+     <!--axios-->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <!--jquery-->
+     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <form id="form_register">
+        <fieldset style="display: inline-block;">
+            <legend>방명록 등록</legend>
+            <input type="text" name="name" placeholder="사용자 이름"><br>
+            <input type="text" name="comment" placeholder="방명록"><br>
+            <br><button type="button" onclick="register();">등록</button>
+        </fieldset>
+    </form>
+    <table id="table" border=1 cellspacing="0" cellpadding="10" style="margin-top: 30px;">
+        <tr>
+            <th>ID</th>
+            <th>작성자</th>
+            <th>방명록</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+        <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%=data[i].id%></td>
+                <td><%=data[i].name%></td>
+                <td><%=data[i].comment%></td>
+                <td><button type=button>수정</button></td>
+                <td><button type=button>삭제</button></td>
+            </tr>
+        <% } %>
+    </table>
+    <script>
+        function register(){
+            let form = document.querySelector("#form_register");
+            let data = {name : form.name.value, comment : form.comment.value}
+            let table = document.querySelector("#table");
+            axios({
+                method:"post",
+                url:"/visitor/register",
+                data : data
+            }).then((res)=>{
+                $("#table").append(`
+                    <tr>
+                        <td>${res.data}</td>
+                        <td>${data.name}</td>
+                        <td>${data.comment}</td>
+                        <td><button type=button>수정</button></td>
+                        <td><button type=button>삭제</button></td>
+                    </tr>
+                `)
+            })
+        }
+    </script>
+</body>
+</html>
