@@ -6,7 +6,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-const router = require("./routes/");
+const router = require("./routes");
 app.use("/", router);
 
 app.get("*", (req,res)=>{
