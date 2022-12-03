@@ -5,31 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <style>
-    #welcomeCard {
-        display:flex; /* display flex로 설정 */
-        flex-direction: column; /* 위에서 아래로 정렬 (열) */
-        justify-content: center; /*세로방향 가운데 정렬*/
-        align-items: center; /*가로방향 가운데 정렬*/
-    }
-    #userForm {
-        text-align: center;
-    }
-    </style>
+    <link rel="stylesheet" href="/static/css/style.css">
     <!--axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/script/script.js"></script>
 </head>
 <body>
     <div id="welcomeCard" >
         <form id="formInfo" action="/user/profile" method="POST">
             <input type="hidden" name="ID">
         </form>
+        <h2 id="welcome">Welcome</h2>
         <form id="userForm">
-            <div>Welcome</div>
-            <div class="show">ID</div>
-            <input type="text" name="ID">
-            <div class="show">Password</div>
-            <input type="password" name="Password">
+            <div class="show">
+                <label for="id">ID</label> 
+            </div>
+            <input type="text" name="ID" id="id">
+            <div class="show">
+                <label for="pwd">Password</label>
+            </div>
+            <input type="password" name="Password" id="pwd">
             <div id="btns">
                 <input type="button" value="Login" onclick="login()"><br>
                 <a href="/user/signup">Register</a>
@@ -37,31 +32,4 @@
         </form> 
     </div>
 </body>
-    <script>
-        function login(){
-            let form = document.querySelector("#userForm");
-            let data = { ID : form.ID.value, Pwd : form.Password.value };
-            // 빈칸 경고
-            if(!data.ID || !data.Pwd){
-                alert("빈칸을 다 채워주세요! :(");
-                return false;
-            }
-            axios({
-                method:"post",
-                url:"/user/signin",
-                data:data
-            }).then((res)=>{
-                let formInfo = document.querySelector("#formInfo");
-                if(res.data){
-                    alert("로그인 성공하셨어요! :)");
-                    formInfo.ID.value = res.data.ID;
-                    formInfo.submit();
-                }else{
-                    alert("대소문자 구분해서 다시 입력해주시겠어요? :(");
-                    form.ID.value = "";
-                    form.Password.value = "";
-                }
-            })
-        }
-    </script>
 </html>

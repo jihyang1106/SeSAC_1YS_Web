@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원정보 수정</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>회원정보 수정폼</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/script/script.js"></script>
 </head>
 <body>
     <div id="welcomeCard">
+        <h2 id="welcome">Welcome</h2>
         <form id="userForm">
-            <div>Welcome</div>
-            <div class="show">ID</div>
-            <input type="text" name="ID" value="<%=data.ID%>" readonly>
-            <div class="show">Password</div>
-            <input type="password" name="password" value="<%=data.Password%>">
-            <div class="show">Name</div>
-            <input type="text" name="name" value="<%=data.name%>">
-            <br>
-            <span id="btns">
-                <input type="button" value="Edit" onclick="profileEdit();">
-                <input type="button" value="Delete" onclick="profileDel();">
-            </span>
+            <div id="inputs">
+                <div class="show">
+                    <label for="id">ID</label>
+                </div>
+                <input type="text" name="ID" value="<%=data.ID%>" id="id" readonly>
+                <div class="show">
+                    <label for="pwd">Password</label>
+                </div>
+                <input type="password" name="Password" value="<%=data.Password%>" id="pwd">
+                <div class="show">
+                    <label for="name">Name</label>
+                </div>
+                <input type="text" name="name" value="<%=data.name%>" id="name">
+            </div>
+            <div id="btns">
+                <input type="button" value="Edit" onclick="updateProfile();">
+                <input type="button" value="Delete" id="<%=data.ID%>" onclick="deleteProfile(this.id);">
+            </div>
         </form> 
     </div>
 </body>

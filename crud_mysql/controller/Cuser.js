@@ -1,3 +1,4 @@
+const { response } = require("express");
 const User = require("../model/User");
 
 // 로그인 페이지 렌더
@@ -22,7 +23,7 @@ exports.signupChk = (req,res) => {
     })
 }
 
-// 회원정보수정 폼 보이게 하기 
+// 회원정보수정 폼 페이지
 exports.profile = (req,res) => {
     User.profile(req.body.ID, (row) => {
         if(row.length>0) {
@@ -33,3 +34,16 @@ exports.profile = (req,res) => {
     })
 }
 
+// 회원정보수정
+exports.updateProfile = (req,res) => {
+    User.update(req.body, ()=>{
+        res.send(true);
+    })
+}
+
+// 회원정보삭제 
+exports.deleteUser = (req,res) => {
+    User.delete(req.body.ID, ()=>{
+        res.send(true)
+    })
+}

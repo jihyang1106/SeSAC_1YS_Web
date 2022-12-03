@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const conn = mysql.createConnection({
     host: 'localhost',
     user : 'user',
-    password : '3306',
+    password : 'root1106',
     database : 'testdb',
 })
 
@@ -32,7 +32,27 @@ exports.profile = (id, cb) => {
     let sql = `SELECT * FROM member WHERE ID='${id}' LIMIT 1`;
     conn.query(sql, (err, row)=> {
         if(err) throw err;
-        // console.log("users : ", row); 
         cb(row);
+    })
+}
+
+// 회원 profile 수정
+exports.update = (user, cb) => {
+    let sql = `UPDATE member SET Password='${user.Pwd}', name='${user.name}'
+    WHERE ID='${user.ID}'`;
+    conn.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("update result: ", result);
+        cb();
+    })
+}
+
+// 회원 profile 삭제
+exports.delete = (id, cb) => {
+    let sql = `DELETE FROM member WHERE ID='${id}'`;
+    conn.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("delete result: ", result);
+        cb();
     })
 }
