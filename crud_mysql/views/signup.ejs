@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        #welcomeCard {
+            display:flex; /* display flex로 설정 */
+            flex-direction: column; /* 위에서 아래로 정렬 (열) */
+            justify-content: center; /*세로방향 가운데 정렬*/
+            align-items: center; /*가로방향 가운데 정렬*/
+        }
+        #userForm {
+            text-align: center;
+        }
+    </style>
+    <!--axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="welcomeCard">
+        <form id="userForm">
+            <div>Welcome</div>
+            <div class="show">ID</div>
+            <input type="text" name="ID">
+            <div class="show">Password</div>
+            <input type="password" name="Password">
+            <div class="show">Name</div>
+            <input type="text" name="name">
+            <br>
+            <div id="btns">
+                <input type="button" value="Register" onclick="register()">
+                <a href="/user/signin">Login</a>
+            </div>
+        </form> 
+    </div>
+</body>
+    <script>
+        function register(){
+            let form = document.querySelector("#userForm");
+            if(!form.ID.value || !form.Password.value || !form.name.value ){
+                alert("빈칸을 다 채워주세요! :(");
+                return false;
+            }
+            axios({
+                method:"post",
+                url:"/user/signup",
+                data:{ID : form.ID.value, Pwd : form.Password.value, name : form.name.value}
+            }).then((res)=>{
+                alert("회원가입에 성공하셨습니다. :)");
+                window.location.href = 'http://localhost:8080/user/signin';
+            })
+
+        }
+    </script>
+</html>
