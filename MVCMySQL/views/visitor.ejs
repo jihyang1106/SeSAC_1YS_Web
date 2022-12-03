@@ -9,14 +9,26 @@
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <!--jquery-->
      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+     <style>
+        .d-none {
+            display: none ;
+        }
+     </style>
 </head>
 <body>
     <form id="form_register">
         <fieldset style="display: inline-block;">
             <legend>방명록 등록</legend>
+            <input type="hidden" name="id" >
             <input type="text" name="name" placeholder="사용자 이름"><br>
             <input type="text" name="comment" placeholder="방명록"><br>
-            <br><button type="button" onclick="register();">등록</button>
+            <div class="update-btns d-none">
+                <br><button type="button" onclick="update_visitor();">수정</button>
+                <br><button type="button" onclick="cancle_update()">취소</button>
+            </div>
+            <div class="register-btn">
+                <br><button type="button" onclick="register();">등록</button>
+            </div>
         </fieldset>
     </form>
     <table id="table" border=1 cellspacing="0" cellpadding="10" style="margin-top: 30px;">
@@ -32,8 +44,8 @@
                 <td><%=data[i].id%></td>
                 <td><%=data[i].name%></td>
                 <td><%=data[i].comment%></td>
-                <td><button type=button>수정</button></td>
-                <td><button type=button>삭제</button></td>
+                <td><button type=button onclick="update_load('<%=data[i].id%>', this)">수정</button></td>
+                <td><button type=button onclick="del_visitor('<%=data[i].id%>', this)">삭제</button></td>
             </tr>
         <% } %>
     </table>
@@ -52,11 +64,66 @@
                         <td>${res.data}</td>
                         <td>${data.name}</td>
                         <td>${data.comment}</td>
-                        <td><button type=button>수정</button></td>
-                        <td><button type=button>삭제</button></td>
+                        <td><button type=button onclick="update_load(${res.data}, this)">수정</button></td>
+                        <td><button type=button onclick="del_visitor(${res.data}, this)">삭제</button></td>
                     </tr>
                 `)
             })
+        }
+
+        function del_visitor(del_id, delBtn){
+            axios({
+                method:"delete",
+                url:"/visitor/delete",
+                data:{id : del_id}
+            }).then((res)=>{
+                delBtn.parentElement.parentElement.remove();
+            })
+        }
+
+        let update_tr;
+
+        function update_load(id, element){
+            axios({
+                method:"get",
+                url:"/visitor/get_visitor",
+                params : {id : id}
+            }).then((res)=>{
+                let form = document.getElementById("form_register");
+                form.id.value = res.data.id;
+                form.name.value = res.data.name;
+                form.comment.value = res.data.comment;
+                $(".update-btns").removeClass("d-none");
+                $(".register-btn").addClass("d-none");
+
+                update_tr = element.parentElement.parentElement;
+            })
+        }
+
+        function update_visitor(){
+            let form = document.getElementById("form_register");
+            let data = { id: form.id.value, name: form.name.value, comment : form.comment.value };
+            
+            axios({
+                method:"patch",
+                url:"/visitor/update",
+                data: data
+            }).then((res)=>{
+                update_tr.children[1].innerText = data.name;
+                update_tr.children[2].innerText = data.comment;
+
+                cancle_update();
+
+                $(".update-btns").addClass("d-none");
+                $(".register-btn").removeClass("d-none");
+            })
+        }
+
+        function cancle_update(){
+            let form = document.getElementById("form_register");
+            form.id.value = "";
+            form.name.value = "";
+            form.comment.value = "";
         }
     </script>
 </body>
