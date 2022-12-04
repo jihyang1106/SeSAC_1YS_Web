@@ -1,4 +1,3 @@
-const { response } = require("express");
 const User = require("../model/User");
 
 // 로그인 페이지 렌더
