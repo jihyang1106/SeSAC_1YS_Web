@@ -8,12 +8,13 @@ exports.signin = (req, res) => {
 exports.signinChk = async (req, res) => {
     // (1) async await
     let row = await User.findAll({
-        like : {
+        where : {
             ID : req.body.ID,
         }
     })
+    console.log(row[0]);
     res.send(row[0]);
-    
+
     // (2)
     // User.findAll({
     //     where : { 
