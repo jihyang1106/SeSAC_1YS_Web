@@ -78,6 +78,7 @@
                 form.comment.value = "";
                 $(".update-btn").addClass("d-none");
                 $(".register-btn").removeClass("d-none");
+                
             })
         }
 
@@ -132,6 +133,8 @@
                         <td><button type="button" onclick="delete_visitor(${response.data}, this)">삭제</button></td>
                     </tr>
                 `)
+                form.name.value = "",
+                form.comment.value = ""
             })
         }
     </script>
