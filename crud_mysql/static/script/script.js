@@ -1,19 +1,18 @@
 // 로그인 
 function login(){
     let form = document.querySelector("#userForm");
-    let data = { ID : form.ID.value, Pwd : form.Password.value };
     // 빈칸 경고
-    if(!data.ID || !data.Pwd){
+    if(!form.ID.value || !form.Password.value){
         alert("빈칸을 다 채워주세요! :(");
         return false;
     }
     axios({
         method:"post",
         url:"/user/signin",
-        data:data
+        data: { ID : form.ID.value }
     }).then((res)=>{
         let formInfo = document.querySelector("#formInfo");
-        if(res.data){
+        if(res.data.ID == form.ID.value){
             alert("로그인 성공하셨어요! :)");
             form.reset();
             formInfo.ID.value = res.data.ID;
@@ -62,6 +61,7 @@ function updateProfile(){
     })
 }
 
+// 회원 탈퇴
 function deleteProfile(id) {
     if(confirm("정말 탈퇴하시겠어요? :(")){
         axios({

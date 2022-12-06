@@ -11,7 +11,7 @@ const router = require("./routes");
 app.use("/user", router);
 
 app.get("*", (req,res)=>{
-    res.send("입력하신 주소가 존재하지 않습니다.")
+    res.render("404");
 })
 
 app.listen(port, ()=>{
