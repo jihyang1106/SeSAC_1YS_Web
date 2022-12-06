@@ -29,7 +29,6 @@ exports.register_visitor = (info, cb) => {
         //console.log("insert result: ", result);
         cb(result.insertId);
     })
-
 }
 
 // DELETE

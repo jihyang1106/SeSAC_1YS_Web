@@ -27,9 +27,10 @@ exports.delete = (req,res) => {
 
 // ID값으로 데이터 조회(GET)
 exports.get_visitor_by_id = (req,res) => {
-    // mysql req.body.id에 해당하는 데이터 조회
+    // mysql req.query.id에 해당하는 데이터 조회
     // 조회한 데이터 응답
     Visitor.get_visitor_by_id_model(req.query.id, (rows)=>{
+        
         res.send(rows);
     })
 }

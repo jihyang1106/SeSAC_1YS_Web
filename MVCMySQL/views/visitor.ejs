@@ -50,6 +50,7 @@
         <% } %>
     </table>
     <script>
+        // 회원 등록 (INSERT)
         function register(){
             let form = document.querySelector("#form_register");
             let data = {name : form.name.value, comment : form.comment.value}
@@ -71,6 +72,7 @@
             })
         }
 
+        // 회원 삭제 (DELETE)
         function del_visitor(del_id, delBtn){
             axios({
                 method:"delete",
@@ -82,7 +84,7 @@
         }
 
         let update_tr;
-
+        // 수정할 행 보이게 하기 (SELECT BY GET METHOD)
         function update_load(id, element){
             axios({
                 method:"get",
@@ -96,14 +98,14 @@
                 $(".update-btns").removeClass("d-none");
                 $(".register-btn").addClass("d-none");
 
-                update_tr = element.parentElement.parentElement;
+                update_tr = element.parentElement.parentElement; // tr태그
             })
         }
 
+        // visitor 수정 (UPDATE)
         function update_visitor(){
             let form = document.getElementById("form_register");
             let data = { id: form.id.value, name: form.name.value, comment : form.comment.value };
-            
             axios({
                 method:"patch",
                 url:"/visitor/update",
