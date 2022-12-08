@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션 실습(로그아웃)</title>
+      <!--axios-->
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!--만약에 data를 req.session으로 보냈으면 data.user로!-->
+    <%=data%>님 환영합니다
+    <input type="button" onclick="logout()" value="로그아웃">
+</body>
+    <script> 
+        function logout(){
+            axios({
+                url:"/logout",
+                method:"delete",
+            }).then(()=>{
+                alert("로그아웃 되었습니다.");
+                location.href="/";
+            })
+        }
+    </script>
+</html>
