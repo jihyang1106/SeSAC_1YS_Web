@@ -12,7 +12,7 @@ const session = require("express-session");
 app.use(session({
     secret: "sesac", // 무조건 써야함 임의의 문자열로 세션 암호화 결정
     resave: false, // 변경사항이 없어도 재저장을 할 것인지에 대한 여부
-    saveUninitialized: true,
+    saveUninitialized: true, // 초기화되지 않은 세션 저장 여부, 보통 true
     // cookie: // 서버가 발급해준 세션 ID를 쿠키로 사용 가능
     //         { // session id 쿠키에 대한 옵션
     //             httpOnly:true,
@@ -24,12 +24,6 @@ app.use(session({
 
 // 세션 생성
 app.get("/setSession", (req,res)=>{
-    // 세션도 쿠키처럼 객체형태
-    // req.session = { }
-    // req.session 객체를 사용하는 이유 클라이언트마다 고유의 세션 ID를 가지고 있기 때문에
-    // 서버는 세션 ID를 가져오기 위해서 req.session으로 접근하는 것
-    // req.session 에는 클라이언트의 고유 세션 ID가 들어있다. 
-    // 키 값은 id 제외해서 사용 가능
     req.session.user = "SeSAC";
     res.send("세션 생성 성공");
 })
