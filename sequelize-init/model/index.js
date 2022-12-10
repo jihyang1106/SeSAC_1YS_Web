@@ -19,4 +19,24 @@ db.Sequelize = Sequelize;
 // Sequelize의 DataTypes을 사용하기 위해 두 번째 인자
 db.Visitor = require("./Visitor")(sequelize, Sequelize);
 
+// 각각 다른 테이블 생성
+db.User = require("./User")(sequelize, Sequelize);
+db.Product = require("./Product")(sequelize, Sequelize);
+db.Payment = require("./Payment")(sequelize, Sequelize);
+
+// 유저 테이블은 여러개의 결제 내역을 가지고 있다. 
+db.User.hasMany(db.Payment, {
+    foreignKey : "userId", // Payment 테이블에 있는 컬럼
+    sourceKey : "userId",   // User 테이블에 있는 컬럼
+    onDelete : "cascade"
+})
+
+// Payment 테이블은 유저테이블의 userId를 참조하고 있다. 
+db.Payment.belongsTo(db.user, {
+    foreignKey : "userId", // Payment 테이블에 있는 컬럼
+    sourceKey : "userId",   // User 테이블에 있는 컬럼
+    onDelete : "cascade"
+})
+
+
 module.exports = db;
