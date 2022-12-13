@@ -23,8 +23,6 @@ router.get("/test", async (req,res) => {
             const url = "http://10000recipe.com"+$(list).find("a.common_sp_link").attr('href');
 
             jsonList[i] = {title,url};
-            
-
             // console.log(i+1, {
             //     title,
             //     url
