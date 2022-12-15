@@ -2,7 +2,7 @@ const express = require("express");
 const controller = require("../controller/index");
 const router = express.Router();
 
-router.get("/test", controller.getIndex);
+router.get("/", controller.getIndex);
 
 // const axios = require("axios");
 // const cheerio = require("cheerio");

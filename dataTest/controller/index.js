@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const fs = require("fs");
 
 
 exports.getIndex = async (req, res) => {
@@ -29,23 +30,21 @@ exports.getIndex = async (req, res) => {
                 const img = $("img#main_thumbs").attr('src');
                 
                 dbList.push({
-                    title : title,
-                    url : url, 
-                    time : time,
-                    ingd : ingd,
-                    img : img,
+                    recipe_title : title,
+                    recipe_url : url, 
+                    recipe_ingd : ingd,
+                    recipe_time : time,
+                    recipe_img : img,
                 })
                 // fs.writeFileSync('csv/result.csv', dbList);
             });
             // await axios 세부
             const jsonList = JSON.stringify(dbList); 
-            fs.writeFile('jsonFile.json', jsonList, function(err){
+            fs.writeFile('recipe.json', jsonList, function(err){
                 if(err) throw err;
             })
         });
         // each
-
-
     }).catch(err => {
         console.log(err);
         // for(var i=0; i<Object.values(dbList).length; i++){
