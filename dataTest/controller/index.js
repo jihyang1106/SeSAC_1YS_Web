@@ -7,7 +7,7 @@ exports.getIndex = async (req, res) => {
     
     await axios({
         method : 'get',
-        url : "https://www.10000recipe.com/ranking/home_new.html",
+        url : "https://www.10000recipe.com/recipe/list.html?cat2=18&order=reco&page=5",
     }).then((res)=>{
         const $ = cheerio.load(res.data);
         const list = $("ul.common_sp_list_ul > li.common_sp_list_li");
@@ -35,12 +35,14 @@ exports.getIndex = async (req, res) => {
                     recipe_ingd : ingd,
                     recipe_time : time,
                     recipe_img : img,
+                    recipe_tag : "빠른한끼",
                 })
                 // fs.writeFileSync('csv/result.csv', dbList);
             });
             // await axios 세부
+            console.log(dbList);
             const jsonList = JSON.stringify(dbList); 
-            fs.writeFile('recipe.json', jsonList, function(err){
+            fs.writeFile('fastfood3.json', jsonList, function(err){
                 if(err) throw err;
             })
         });
