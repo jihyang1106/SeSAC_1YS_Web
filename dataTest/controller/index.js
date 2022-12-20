@@ -7,7 +7,7 @@ exports.getIndex = async (req, res) => {
     
     await axios({
         method : 'get',
-        url : "https://www.10000recipe.com/recipe/list.html?cat2=18&order=reco&page=5",
+        url : "https://www.10000recipe.com/ranking/home_new.html",
     }).then((res)=>{
         const $ = cheerio.load(res.data);
         const list = $("ul.common_sp_list_ul > li.common_sp_list_li");
@@ -26,23 +26,23 @@ exports.getIndex = async (req, res) => {
                 const $ = cheerio.load(res.data);  // $("특정태그")
                 const time = $("body").find("span.view2_summary_info2").text();
                 const ingre = $("div.ready_ingre3 ul:first-child > li > a:first-child").text().replace(/ /gi, ""); // 공백제거
-                const ingd = ingre.slice(0, -1); // 마지막 공백 제거
+                // const ingd = ingre.slice(0, -1); // 마지막 공백 제거
+                const ingd = ingre.replace(/\n/g, ",");
                 const img = $("img#main_thumbs").attr('src');
                 
                 dbList.push({
                     recipe_title : title,
                     recipe_url : url, 
-                    recipe_ingd : ingd,
+                    recipe_ingd : `,${ingd}`,
                     recipe_time : time,
                     recipe_img : img,
-                    recipe_tag : "빠른한끼",
                 })
                 // fs.writeFileSync('csv/result.csv', dbList);
             });
             // await axios 세부
             console.log(dbList);
             const jsonList = JSON.stringify(dbList); 
-            fs.writeFile('fastfood3.json', jsonList, function(err){
+            fs.writeFile('recipe1.json', jsonList, function(err){
                 if(err) throw err;
             })
         });
