@@ -24,7 +24,7 @@ exports.getIndex = async (req, res) => {
                 url : url,
             }).then((res)=>{ 
                 const $ = cheerio.load(res.data);  // $("특정태그")
-                const time = $("body").find("span.view2_summary_info2").text();
+                const time = $("body").find("span.view2_summary_info2").text().replace(/[^0-9]/g,'');
                 const ingre = $("div.ready_ingre3 ul:first-child > li > a:first-child").text().replace(/ /gi, ""); // 공백제거
                 // const ingd = ingre.slice(0, -1); // 마지막 공백 제거
                 const ingd = ingre.replace(/\n/g, ",");
