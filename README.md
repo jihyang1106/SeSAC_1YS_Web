@@ -1,3 +1,3 @@
 # SeSAC_1YS_Web
 
-SeSAC 웹 풀스택 교육 자료
+React 자료들만 모아놓은 폴더
