@@ -15,3 +15,4 @@ react-my-app-3
 
 react-my-app-4
 (1) useRef
+(2) useEffect
