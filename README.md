@@ -22,3 +22,7 @@ backend-server
 
 redux-app
 (1) redux 기초
+(2) To-do list 실습
+
+mbti-app
+(1) mbti app 실습
