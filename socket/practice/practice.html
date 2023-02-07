@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="/practice.css" rel="stylesheet" />
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="chatView">
+        <div id="user" style="text-align: center; margin: 10px"></div>
+      </div>
+      <div id="chatForm">
+        <input type="text" id="msg" />
+        <button type="button" id="send" onclick="chat()">전송</button>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      let chatView = document.getElementById("chatView");
+      let chatForm = document.getElementById("chatForm");
+
+      let user;
+      // 최초 입장 시
+      socket.on("welcome", (msg) => {
+        $("#user").text(msg);
+      });
+
+      const chat = () => {
+        let msg = $("#msg");
+
+        socket.emit("send", msg.val());
+        let msgLine = $("<div class='msgLine'>");
+        let msgBox = $("<div class='me'>");
+
+        msgBox.append(msg.val());
+        msgBox.css("display", "inline-block");
+        msgLine.css("text-align", "right");
+        msgLine.append(msgBox);
+
+        $("#chatView").append(msgLine);
+        msg.val("");
+        chatView.scrollTop = chatView.scrollHeight;
+      };
+
+      socket.on("SEND", function (msg) {
+        var msgLine = $('<div class="msgLine">');
+        var msgBox = $('<div class="msgBox">');
+
+        msgBox.append(msg);
+        msgBox.css("display", "inline-block");
+
+        msgLine.append(msgBox);
+        $("#chatView").append(msgLine);
+
+        chatView.scrollTop = chatView.scrollHeight;
+      });
+    </script>
+  </body>
+</html>
