@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>socket.io</title>
+    <script
+      src="https://cdn.socket.io/4.5.4/socket.io.min.js"
+      integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="notice">공지 메세지</div>
+      <div class="my-chat"><div>내가 보낸 메시지</div></div>
+      <div class="other-chat"><div>남이 보낸 메시지</div></div>
+      <div class="dm my-dm">
+        <div>(속닥속닥) 내가 보낸 디엠</div>
+      </div>
+      <div class="dm">
+        <div>(속닥속닥) 남이 보낸 디엠</div>
+      </div>
+    </div>
+    <select id="members">
+      <option value="전체">전체</option>
+    </select>
+    <input type="text" id="msg_box" onkeydown="enter()" />
+    <button onclick="btnSend()">전송</button>
+    <script src="/script.js"></script>
+  </body>
+</html>

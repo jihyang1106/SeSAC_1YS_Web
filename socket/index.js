@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
   console.log("server socket connected", socket.id);
 
   // 최초 입장시
-  io.emit("welcome", `${socket.id}님이 입장하셨습니다.`);
+  io.emit("notice", `${socket.id}님이 입장하셨습니다.`);
 
   socket.on("send", function (msg) {
     console.log(msg);

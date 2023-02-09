@@ -1,0 +1,33 @@
+.container {
+  padding: 20px;
+  background-color: lightblue;
+  overflow-y: auto;
+}
+.notice {
+  text-align: center;
+}
+.container div div {
+  display: inline-block;
+  padding: 10px;
+}
+.container div {
+  margin-bottom: 10px;
+}
+.my-chat {
+  text-align: right;
+}
+.my-chat div {
+  background-color: yellow;
+}
+.other-chat {
+  text-align: left;
+}
+.other-chat div {
+  background-color: white;
+}
+.my-dm {
+  text-align: right;
+}
+.dm div {
+  background-color: lightpink;
+}

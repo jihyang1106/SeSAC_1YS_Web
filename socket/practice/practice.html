@@ -15,60 +15,17 @@
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <script src="/practice.js"></script>
+    <title>채팅</title>
   </head>
   <body>
     <div id="container">
+      <div id="notice"></div>
       <div id="chatView">
-        <div id="user" style="text-align: center; margin: 10px"></div>
+        <div id="user"></div>
       </div>
-      <div id="chatForm">
-        <input type="text" id="msg" />
-        <button type="button" id="send" onclick="chat()">전송</button>
-      </div>
+      <input type="text" id="msg" />
+      <button type="button" id="send" onclick="chat()">전송</button>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      let socket = io();
-      let chatView = document.getElementById("chatView");
-      let chatForm = document.getElementById("chatForm");
-
-      let user;
-      // 최초 입장 시
-      socket.on("welcome", (msg) => {
-        $("#user").text(msg);
-      });
-
-      const chat = () => {
-        let msg = $("#msg");
-
-        socket.emit("send", msg.val());
-        let msgLine = $("<div class='msgLine'>");
-        let msgBox = $("<div class='me'>");
-
-        msgBox.append(msg.val());
-        msgBox.css("display", "inline-block");
-        msgLine.css("text-align", "right");
-        msgLine.append(msgBox);
-
-        $("#chatView").append(msgLine);
-        msg.val("");
-        chatView.scrollTop = chatView.scrollHeight;
-      };
-
-      socket.on("SEND", function (msg) {
-        var msgLine = $('<div class="msgLine">');
-        var msgBox = $('<div class="msgBox">');
-
-        msgBox.append(msg);
-        msgBox.css("display", "inline-block");
-
-        msgLine.append(msgBox);
-        $("#chatView").append(msgLine);
-
-        chatView.scrollTop = chatView.scrollHeight;
-      });
-    </script>
   </body>
 </html>

@@ -25,10 +25,18 @@ body {
   padding: 0.5rem;
 }
 
+/*대화명*/
 .user-container label {
   font-size: 14px;
   margin-right: 1rem;
 }
+
+/*닉네임 input*/
+#nickname {
+  height: 30px;
+  padding-left: 10px;
+}
+
 .user-container input {
   border-radius: 3px;
   border: none;

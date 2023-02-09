@@ -22,6 +22,9 @@ function send() {
 
 sendBtn.addEventListener("click", send);
 
+socket.on("notice", (msg) => {
+  console.log(msg);
+});
 socket.on("chatting", (data) => {
   const { name, msg, time } = data;
   const item = new LiModel(name, msg, time); // LiModel을 인스턴스화
