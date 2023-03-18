@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  node-project: #사용자 임의 이름 생성
+    build:
+      context: ./docker #Dockerfile이 있는 폴더
+    volumes:
+      - ./docker:/app #Dockerfile에 있는 작업 디렉토리
+    ports:
+      - "8080:8000"
+    container_name: node-project2
+    command: bash -c "npm install & node index.js"
+
+  react-project:
+    build:
+      context: ./docker_react #Dockerfile이 있는 폴더
+    volumes:
+      - ./docker_react/build:/usr/share/nginx/html #Dockerfile에 있는 작업 디렉토리
+    ports:
+      - "80:80"
+    container_name: react-project2
