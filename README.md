@@ -1,4 +1,5 @@
 # 👩‍💻새싹 웹 풀스택
+> main branch, react branch(react, redux), socker branch(socket.io)
 
 ## 수업 진도 
 ### 📖 html, css, JavaScript, JQuery, Node.js, animation(css)
