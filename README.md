@@ -23,6 +23,9 @@
 ### 📖 docker, docker_react, docker-compose.yml
 #### docker 개념 및 실습
 
+### 📖 TypeScript
+#### Typescript 개념
+
 ## 개인 연습
 ### 📖 API_practice
 #### 혼자서 한 API 개인 연습(알라딘 도서 API)
